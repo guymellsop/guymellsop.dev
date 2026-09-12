@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ExhibitCard from '../components/ExhibitCard.astro';
+
+// The pamphlet: curated, ranked, for someone with ninety seconds.
+// It is a *filter* over the same content the encyclopedia uses, not a separate list.
+const front = (
+  await getCollection('exhibits', (e) => !e.data.draft && e.data.tier === 'front')
+).sort((a, b) => (a.data.frontRank ?? 999) - (b.data.frontRank ?? 999));
+---
+
+<Base
+  title="Guy Mellsop"
+  description="Technical artist and tools developer. Systems that make content cheap to produce — Unreal Engine, Niagara, procedural tooling."
+>
+  <h1>Guy Mellsop</h1>
+  <p class="lede">
+    I build the systems that make content cheap to produce — procedural tools, gameplay
+    architecture, and effects that are the mechanic rather than decoration on one.
+  </p>
+  <p class="sub">
+    Mostly Unreal Engine. Currently building <em>Neon Echo</em>, a first-person puzzle game, and
+    shipping a procedural collision plugin.
+  </p>
+
+  <h2>Selected work</h2>
+
+  {
+    front.length > 0 ? (
+      <ul class="cards">
+        {front.map((exhibit) => (
+          <ExhibitCard exhibit={exhibit} />
+        ))}
+      </ul>
+    ) : (
+      <p class="sub">Nothing published yet.</p>
+    )
+  }
+
+  <p style="margin-top:2rem"><a href="/work/">See everything &rarr;</a></p>
+</Base>

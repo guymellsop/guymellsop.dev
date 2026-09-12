@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  exhibit: CollectionEntry<'exhibits'>;
+}
+
+const { exhibit } = Astro.props;
+const { title, hook, project, year, tech } = exhibit.data;
+---
+
+<li class="card">
+  <h3><a href={`/work/${exhibit.id}/`}>{title}</a></h3>
+  <p>{hook}</p>
+  <div class="meta">
+    <span>{project}</span>
+    <span>{year}</span>
+  </div>
+  {
+    tech.length > 0 && (
+      <ul class="tags">
+        {tech.map((t) => (
+          <li>{t}</li>
+        ))}
+      </ul>
+    )
+  }
+</li>

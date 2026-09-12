@@ -1,0 +1,75 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+
+export const getStaticPaths = (async () => {
+  const exhibits = await getCollection('exhibits', (e) => !e.data.draft);
+  return exhibits.map((exhibit) => ({
+    params: { id: exhibit.id },
+    props: { exhibit },
+  }));
+}) satisfies GetStaticPaths;
+
+const { exhibit } = Astro.props;
+const { title, hook, project, year, tech, media, defensibility } = exhibit.data;
+
+const room = await getEntry(exhibit.data.room);
+const { Content } = await render(exhibit);
+---
+
+<Base title={title} description={hook}>
+  <article>
+    <h1>{title}</h1>
+    <p class="lede">{hook}</p>
+
+    <div class="meta">
+      <span>{project}</span>
+      <span>{year}</span>
+      {room && <a href={`/work/#${room.id}`}>{room.data.name}</a>}
+    </div>
+
+    {
+      tech.length > 0 && (
+        <ul class="tags">
+          {tech.map((t) => (
+            <li>{t}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      media.map((m) => (
+        <figure>
+          {m.type === 'video' ? (
+            <video src={m.src} poster={m.poster} controls preload="none" playsinline />
+          ) : (
+            <img src={m.src} alt={m.caption} loading="lazy" />
+          )}
+          <figcaption>{m.caption}</figcaption>
+        </figure>
+      ))
+    }
+
+    {/*
+      Rendered from the schema, not written by hand. Work marked "directed" always
+      carries its disclosure — it cannot be forgotten on an individual page.
+    */}
+    {
+      defensibility === 'directed' && (
+        <aside class="disclosure">
+          <strong>How this was built</strong>
+          The architecture, the design decisions and the direction here are mine. The
+          implementation was largely AI-generated — I can talk through the architecture in
+          detail, but not the source line by line.
+        </aside>
+      )
+    }
+
+    <Content />
+
+    <hr />
+    <p><a href="/work/">&larr; All work</a></p>
+  </article>
+</Base>

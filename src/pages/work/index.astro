@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ExhibitCard from '../../components/ExhibitCard.astro';
+
+// The encyclopedia: everything worth showing, grouped by room.
+// Same content as the front page — a different filter and a different ordering.
+const rooms = (await getCollection('rooms')).sort((a, b) => a.data.order - b.data.order);
+const exhibits = await getCollection('exhibits', (e) => !e.data.draft);
+
+const byRoom = rooms
+  .map((room) => ({
+    room,
+    items: exhibits
+      .filter((e) => e.data.room.id === room.id)
+      .sort((a, b) => a.data.order - b.data.order),
+  }))
+  .filter((group) => group.items.length > 0);
+---
+
+<Base
+  title="Work"
+  description="Everything worth showing — gameplay systems, tech art, tools, and process."
+>
+  <h1>Work</h1>
+  <p class="lede">
+    Grouped by discipline. The front page is the short version; this is the rest of it.
+  </p>
+
+  {
+    byRoom.map(({ room, items }) => (
+      <section>
+        <div class="room-head">
+          <h2 id={room.id}>{room.data.name}</h2>
+          <p>{room.data.blurb}</p>
+        </div>
+        <ul class="cards">
+          {items.map((exhibit) => (
+            <ExhibitCard exhibit={exhibit} />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  {byRoom.length === 0 && <p class="sub">Nothing published yet.</p>}
+</Base>
