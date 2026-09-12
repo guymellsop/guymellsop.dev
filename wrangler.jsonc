@@ -1,0 +1,13 @@
+{
+	// Static site deployed on Cloudflare Workers.
+	//
+	// There is deliberately no `main` entry point: every page is pre-rendered at
+	// build time, so there is no server-side code to run. Wrangler just serves
+	// whatever `npm run build` put in ./dist.
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "guymellsop-dev",
+	"compatibility_date": "2026-09-12",
+	"assets": {
+		"directory": "./dist"
+	}
+}
