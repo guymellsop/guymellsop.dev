@@ -3,8 +3,7 @@ title: Trapping Rain Water, as a puzzle
 hook: A notoriously frustrating algorithm problem, turned into a mechanic where the player edits the terrain the algorithm runs over.
 room: computer-science
 order: 2
-tier: front
-frontRank: 5
+tier: deep
 project: Neon Echo
 year: 2025
 tech: [Blueprint, C++, Algorithms]

@@ -19,12 +19,17 @@ fifteen rooms using to solve puzzles.
 
 ## The point
 
-**No new weapons were built for this.** The projectile-spawner cubes and platform-movers that
-open doors and bridge gaps are, under pressure, an arsenal. The encounter is a test of whether
-the puzzle toolkit holds up when something is trying to kill you.
+**No new weapon system was built for this.** The projectile-spawner cubes and platform-movers
+that open doors and bridge gaps are, under pressure, an arsenal. The encounter is a test of
+whether the puzzle toolkit holds up when something is trying to kill you.
 
-That is the design I actually want to make — combat where puzzles are a means to an end rather
-than a separate mode — and building it proved the mechanics transfer.
+What combat did need was **new projectile classes** — some deal damage on impact, others run a
+damage trace when the player releases the fire button. They slot into the existing spawner as
+new classes; the delivery system underneath didn't change. That's the payoff for building the
+cubes as a chassis with a swappable payload rather than as one-off objects.
+
+The same structure has room for more. One idea still on the list: spikes that, deployed close
+enough together, trace between each other — so a scattered handful becomes an electric fence.
 
 ## Fiction that pays for itself
 
@@ -39,7 +44,7 @@ systems cheaper.
 
 It also means a stone golem's murderous rage can be, on inspection, a contract dispute:
 
-> "Oh, don't start with the 'unsafe methods' argument again. The contract clearly specified a
+> "Oh, don't start with the 'unpaid overtime' argument again. The contract clearly specified a
 > *functional tower*. You provided a glorified chimney."
 
 ## How the AI works, and what's wrong with it
