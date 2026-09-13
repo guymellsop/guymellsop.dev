@@ -8,7 +8,11 @@ year: 2025
 tech: [Blueprint, Unreal Engine 5, Multiplayer]
 defensibility: own
 source: survival-defence-turret.md
-media: []
+media:
+  - type: video
+    src: https://media.guymellsop.dev/missile-defence-turret.mp4
+    poster: /posters/missile-defence-turret.jpg
+    caption: Left, a client watching the turret; right, the server player firing at it. The turret swings to face each rocket and intercepts it — on both machines.
 ---
 
 *From a multiplayer survival game built as part of a course.*
