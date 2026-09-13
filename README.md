@@ -79,9 +79,32 @@ something by changing one word.
 
 ## Media
 
-**Do not commit video to this repo.** Host it elsewhere (Cloudflare Stream, bunny.net, or an
-unlisted YouTube) and reference the URL in `media`. Keep poster images local - they are small.
-Videos use `preload="none"`, so nothing downloads until a visitor presses play.
+**Do not commit video to this repo.** Videos live in the Cloudflare R2 bucket `guymellsop-media`,
+served at `https://media.guymellsop.dev/<file>`. Posters stay local in `public/posters/` - they are
+small. Videos use `preload="none"`, so nothing downloads until a visitor presses play.
+
+### Adding a video
+
+1. Edit in Resolve: crop out the taskbar, cut to ~20 s, export MP4.
+2. Make a web encode - silent, 1920 wide, playable before fully downloaded:
+
+   ```bash
+   ffmpeg -i input.mp4 -map 0:v:0 -an -dn -map_metadata -1 -write_tmcd 0 -vf "scale=1920:-2" -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -movflags +faststart name.mp4
+   ```
+
+   Expect roughly 5-8 MB for 20 s. Check small UI text is still readable; drop to `-crf 23` if not.
+3. Poster: `ffmpeg -ss <seconds> -i name.mp4 -frames:v 1 -vf "scale=1280:-2" -q:v 3 public/posters/name.jpg`
+   - pick a frame where nothing is selected and the result is on screen.
+4. Upload `name.mp4` to the bucket (dashboard: R2 > guymellsop-media > Objects > Upload).
+5. Add to the exhibit's frontmatter:
+
+   ```yaml
+   media:
+     - type: video
+       src: https://media.guymellsop.dev/name.mp4
+       poster: /posters/name.jpg
+       caption: What the viewer is watching, in one sentence.
+   ```
 
 ## Deploying
 

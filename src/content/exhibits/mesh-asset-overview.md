@@ -8,7 +8,11 @@ year: 2025
 tech: [Blueprint, Unreal Engine 5, Editor Utilities, Asset Registry]
 defensibility: own
 source: survival-mesh-overview.md
-media: []
+media:
+  - type: video
+    src: https://media.guymellsop.dev/mesh-asset-overview.mp4
+    poster: /posters/mesh-asset-overview.jpg
+    caption: Laying out a foliage pack, switching to a building kit, and re-sorting by triangle density — the grid rebuilds live.
 ---
 
 *From a multiplayer survival game built as part of a course.*
