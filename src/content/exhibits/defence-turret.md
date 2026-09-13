@@ -15,7 +15,7 @@ media:
     caption: Left, a client watching the turret; right, the server player firing at it. The turret swings to face each rocket and intercepts it — on both machines.
 ---
 
-*From a multiplayer survival game built as part of a course.*
+*My own addition to a multiplayer survival game built during a course — not part of the brief, but an extension of the taught building and weapon systems.*
 
 ## The point
 

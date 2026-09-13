@@ -13,8 +13,8 @@ source: survival-zone-system.md
 media: []
 ---
 
-*From a year-long multiplayer survival game built as part of a course. The taught version of this
-system worked. This is what I rebuilt once I understood it well enough not to break it.*
+*My redesign of a taught system, from a year-long multiplayer survival game built during a course. The
+original worked; this is what I rebuilt once I understood it well enough not to break it.*
 
 ## The problem
 

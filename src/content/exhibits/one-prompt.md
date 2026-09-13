@@ -11,7 +11,7 @@ source: survival-interact-system.md
 media: []
 ---
 
-*From a multiplayer survival game built as part of a course.*
+*My redesign of a taught system, from a multiplayer survival game built during a course.*
 
 ## The problem
 

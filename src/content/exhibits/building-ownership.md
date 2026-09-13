@@ -11,7 +11,7 @@ source: survival-building-ownership.md
 media: []
 ---
 
-*From a multiplayer survival game built as part of a course.*
+*My rework of taught code, from a multiplayer survival game built during a course.*
 
 ## The problem
 

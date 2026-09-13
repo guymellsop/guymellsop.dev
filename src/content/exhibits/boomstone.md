@@ -11,7 +11,7 @@ source: survival-harvest-system.md
 media: []
 ---
 
-*From a multiplayer survival game built as part of a course.*
+*My own idea for a multiplayer survival game built during a course — one the taught harvesting system couldn't express, so I redesigned it.*
 
 ## The idea that didn't fit
 

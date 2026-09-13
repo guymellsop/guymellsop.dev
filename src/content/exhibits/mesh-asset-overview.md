@@ -15,7 +15,7 @@ media:
     caption: Laying out a foliage pack, switching to a building kit, and re-sorting by triangle density — the grid rebuilds live.
 ---
 
-*From a multiplayer survival game built as part of a course.*
+*My own tool, built for a multiplayer survival game during a course — replacing the taught approach of placing assets by hand.*
 
 ## The problem
 
