@@ -15,9 +15,10 @@ media: []
 
 ## The problem
 
-Evaluating an asset pack means seeing its meshes side by side, at scale, in the engine. The usual
-way to do that is to drag them into a level one at a time and shuffle them about until you can
-compare them.
+Evaluating an asset pack means seeing its meshes side by side, at scale, in the engine. The taught
+way to build an asset overview was to place them by hand: drag each mesh into a level, space it
+out, and shuffle things about until you could compare them — then do it all again for the next
+pack.
 
 ## What it does
 
@@ -41,6 +42,13 @@ local bounds' minimum Z, so a pack authored with inconsistent pivots still lines
 
 **Labels follow the mesh, not the grid.** Each label is placed at the top of its own mesh's bounds
 plus a margin, so it clears a tall tree and a flat rug alike.
+
+**Numbers are sorted as text, deliberately.** Each mesh's sort key is its value — size, triangle
+count, density or index — converted to fixed-width, zero-padded text, with the asset name appended.
+Fixed width makes alphabetical order match numeric order (`0999` before `1000`, not after), and the
+appended name means meshes with equal values fall back to sorting by name. One string sort handles
+both. It works because every key is non-negative — which, for distances, counts and volumes, they
+always are.
 
 **Triangle density is the useful sort.** Triangles divided by bounding volume pushes over-detailed
 small props to one end of the grid — the ones worth a look before they end up scattered across a
