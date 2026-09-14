@@ -2,7 +2,7 @@
 title: Trapping Rain Water, as a puzzle
 hook: A notoriously frustrating algorithm problem, turned into a mechanic where the player edits the terrain the algorithm runs over.
 room: computer-science
-order: 2
+order: 3
 tier: deep
 project: Neon Echo
 year: 2025
@@ -40,8 +40,8 @@ you understood the algorithm or just recalled the shape of a solution.
 ## Why I keep doing this
 
 It's the third course exercise I've turned into a mechanic. A tree-node data structure became a
-pair of puzzles built around branching light. Pattern-printing and 2D matrix work became a memory
-game whose board is genuinely generated rather than authored — I don't know the solution to it
-either.
+pair of puzzles built around branching light. Pattern-printing and 2D matrix work became
+[a memory game whose board is genuinely generated](/work/memory-blocks/) rather than authored — I
+don't know the solution to it either.
 
 Abstract exercises tend to look like systems to me before they look like homework.
