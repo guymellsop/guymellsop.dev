@@ -10,7 +10,11 @@ year: 2025
 tech: [Niagara, Blueprint, Splines, HLSL]
 defensibility: own
 source: neon-echo.md#the-stairs
-media: []
+media:
+  - type: video
+    src: https://media.guymellsop.dev/magical-stairs.mp4
+    poster: /posters/magical-stairs.jpg
+    caption: In game, a floor button builds the staircase step by step, the player climbs it, and it comes apart in reverse. Then in the editor, the curve is a spline and step count, size and mesh are parameters.
 ---
 
 A laser strikes a receiver, a floor button activates, and eighty steps assemble themselves
@@ -51,3 +55,8 @@ The Blueprint side advances by accumulating delays while Niagara reads a normali
 value — two clocks, so the *timing* of the solid front can drift under a hitch even though the
 positions can't. The fix is designed but not yet built: drive the iteration from a timeline so
 both sides become functions of the same 0–1 progress.
+
+There's also a collision edge case: an unformed step can be overlapped, so something standing inside a
+step's volume when it solidifies gets trapped. For now the player simply can't climb faster than
+collision switches on ahead of them. The proper fix — clearing anything inside a step before it turns
+solid — is designed but deferred.
