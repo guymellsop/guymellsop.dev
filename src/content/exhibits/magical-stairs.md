@@ -12,7 +12,7 @@ defensibility: own
 source: neon-echo.md#the-stairs
 media:
   - type: video
-    src: https://media.guymellsop.dev/magical-stairs.mp4
+    src: https://media.guymellsop.dev/magical-stairs-v2.mp4
     poster: /posters/magical-stairs.jpg
     caption: In game, a floor button builds the staircase step by step, the player climbs it, and it comes apart in reverse. Then in the editor, the curve is a spline and step count, size and mesh are parameters.
 ---
